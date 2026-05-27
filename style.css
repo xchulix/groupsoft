@@ -1,0 +1,500 @@
+/* =========================================================
+   1. VARIABLES Y RESET
+========================================================= */
+:root {
+    --primary:#0A192F;
+    --secondary:#112240;
+    --accent:#00BFFF;
+    --light:#CCD6F6;
+    --white:#ffffff;
+
+    --radius:10px;
+    --transition:0.3s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:var(--primary);
+    color:var(--light);
+    scroll-behavior:smooth;
+    padding-top:80px; /* Exactamente la altura del header */
+}
+
+/* =========================================================
+   2. LAYOUT GLOBAL
+========================================================= */
+section{
+    padding:100px 50px;
+}
+
+/* El hero gestiona su propia altura, sin padding extra */
+section.hero {
+    padding: 0;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+h2{
+    font-size:2.5em;
+    color:var(--white);
+    text-shadow:0 0 10px var(--accent);
+    margin-bottom:40px;
+    text-align:center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(0,191,255,0.6);
+}
+
+/* =========================================================
+   3. HEADER + NAV
+========================================================= */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(10,25,47,0.95);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    height:80px;
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.shrink {
+    height: 65px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+header h1{
+    color:var(--accent);
+    font-size: 1.5em;
+    letter-spacing: 1px;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu a{
+    color:var(--light);
+    text-decoration:none;
+    font-size:1.1em;
+    transition:var(--transition);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu a:hover{
+    color:var(--accent);
+}
+
+
+/* =========================================================
+   5. HERO
+========================================================= */
+.hero{
+    min-height: calc(100vh - 80px);
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("fotos/foto_informatica.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-top: 0;
+}
+
+.caja-texto{
+    background:rgba(0,0,0,0.55);
+    padding:25px;
+    border-radius:var(--radius);
+    backdrop-filter:blur(4px);
+    max-width:700px;
+}
+
+.caja-texto p{
+    font-size:1.2em;
+    margin-top:15px;
+}
+
+.hero h2{
+    font-size:3em;
+    color:var(--white);
+    text-shadow:#6ed9fa 4px 4px 4px;
+}
+
+/* =========================================================
+   6. COMPONENTES REUTILIZABLES
+========================================================= */
+.btn{
+    margin-top:20px;
+    padding:12px 25px;
+    background:var(--accent);
+    border:none;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+    transition:var(--transition);
+    display:inline-block;
+    letter-spacing: 0.5px;
+}
+a:-webkit-any-link{
+    text-decoration: none;
+}
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow: 0 0 15px rgba(0,191,255,0.5);
+}
+
+.card{
+    background:var(--secondary);
+    padding:25px;
+    border-radius:var(--radius);
+    transition:var(--transition);
+    border: 1px solid rgba(0,191,255,0.08);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 30px rgba(0,191,255,0.2);
+    border-color: rgba(0,191,255,0.25);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+/* Imagen para páginas internas */
+.img-servicio{
+    width:100%;
+    max-width:500px;
+    border-radius:10px;
+    margin:20px auto;
+    display:block;
+}
+
+/* =========================================================
+   7. SECCIONES ESPECÍFICAS
+========================================================= */
+
+/* Servicios */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top: 20px;
+}
+
+/* Tecnologías */
+.marcas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:30px;
+    justify-items:center;
+}
+
+.marca{
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:var(--radius);
+    width:160px;
+    text-align:center;
+    transition:var(--transition);
+}
+
+.marca:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 15px var(--accent);
+}
+
+.marca img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    margin-bottom:10px;
+}
+
+/* Testimonios */
+.testimonio{
+    background:var(--secondary);
+    padding:25px;
+    border-radius:var(--radius);
+    font-style:italic;
+}
+
+/* Contacto */
+form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+}
+
+form input, form textarea, form select{
+    margin-bottom:15px;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+}
+
+form input:focus, form textarea:focus, form select:focus{
+    outline:2px solid var(--accent);
+}
+
+.mensaje-enviado{
+    background:var(--secondary);
+    padding:25px;
+    border-radius:var(--radius);
+    display:none;
+}
+
+/* =========================================================
+   8. ANIMACIONES
+========================================================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   9. FOOTER
+========================================================= */
+footer{
+    background:#020C1B;
+    padding:40px 20px;
+    color:var(--light);
+}
+
+.footer-contenedor{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.footer-col{
+    min-width:200px;
+}
+
+.footer-col h3{
+    color:var(--accent);
+    margin-bottom:10px;
+}
+
+.footer-col a{
+    display:block;
+    color:var(--light);
+    text-decoration:none;
+    margin-bottom:5px;
+    transition:var(--transition);
+}
+
+.footer-col a:hover{
+    color:var(--accent);
+}
+
+.footer-copy{
+    text-align:center;
+    margin-top:30px;
+    font-size:0.9em;
+    opacity:0.7;
+}
+
+/* =========================================================
+   10. RESPONSIVE
+========================================================= */
+@media(max-width:768px){
+    header{
+        padding:15px 20px;
+    }
+
+    section{
+        padding:80px 20px;
+    }
+
+    .menu{
+        gap:15px;
+    }
+}
+/* Colaboradores en el footer */
+.footer-marcas-col h3 {
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.footer-marcas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.marca-item {
+    text-align: center;
+    width: 90px; /* antes 120px */
+}
+
+.marca-item img {
+    width: 80px; /* tamaño más pequeño */
+    height: auto;
+    opacity: 0.85;
+    transition: 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,191,255,0.3));
+}
+
+
+.marca-item img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(0,191,255,0.6));
+}
+
+.marca-item p {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: var(--light);
+}
+/* Bloques de servicio más profesionales */
+.servicio-bloque {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.intro-servicio {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.servicio-seccion {
+    margin-bottom: 50px;
+    padding: 25px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+}
+
+.servicio-seccion h3 {
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-size: 1.5em;
+}
+
+.lista-servicio {
+    list-style: none;
+    padding-left: 0;
+}
+
+.lista-servicio li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+}
+.texto-solicitud{
+    text-align: center;
+
+}
+
+
+
+/* Carrusel más pequeño y rectangular */
+.carrusel {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* antes 900px */
+    height: 250px; /* altura reducida */
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,191,255,0.3);
+}
+
+.carrusel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carrusel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* recorta para que quede rectangular */
+    flex-shrink: 0;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,191,255,0.4);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    padding: 5px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0,191,255,0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
