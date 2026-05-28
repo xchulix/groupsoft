@@ -65,9 +65,9 @@ Puedes ver la web funcionando aquí:
 
 ## 👤 Autor
 
-**sixseven**  
+**Pedro Chulián**  
 Desarrollador y administrador de sistemas  
-Apasionado por Linux, automatización, servidores y desarrollo web.
+Apasionado por Linux, automatización, servidores y desarrollo de software.
 
 ---
 
